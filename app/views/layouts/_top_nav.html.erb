@@ -45,6 +45,9 @@
           <% end %>
         </li>
       </ul>
+      <% if current_user %>
+      Signed in as <%= current_user.email %> | <%= link_to "Logout", [:sessions, @destroy] %>
+      <% end %>
     </div>
   </div>
 </nav>
