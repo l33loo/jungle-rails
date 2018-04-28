@@ -55,6 +55,7 @@ class OrdersController < ApplicationController
       end
     end
     order.save!
+    after_save send_email(order)
     order
   end
 
@@ -67,6 +68,12 @@ class OrdersController < ApplicationController
       end
     end
     total
+  end
+
+  private
+
+  def send_email(order)
+    Notifier.confirmation.(order.email).deliver_now
   end
 
 end
