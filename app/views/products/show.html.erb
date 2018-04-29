@@ -26,6 +26,24 @@
       </div>
     </div>
 
+    <div>
+    <table class="table table-bordered">
+      <caption>Reviews</caption>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Review</th>
+        </tr>
+      </thead>
+      <tbody>
+<% puts "!!!REEEEEVIEWWWWW: #{@product.reviews}" %>
+        <% @product.reviews.each do |review| %>
+          <% puts "REEEEEVIEWWWWW: #{review}" %>
+          <%= render 'review', review: review, user: User.find(review.user_id) %>
+        <% end %>
+      </tbody>
+    </table>
+
   </article>
 
 </section>
