@@ -48,7 +48,7 @@
       <% if current_user %>
         Signed in as <%= current_user.email %> | <%= link_to "Logout", [:sessions, @destroy] %>
       <% else %>
-        <%= link_to "Login", new_session_path %>
+        <%= link_to "Login", new_session_path %> | <%= link_to "Sign up", new_user_path %>
       <% end %>
     </div>
   </div>
