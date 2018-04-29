@@ -33,6 +33,7 @@
     </table>
   </div>
 
+  <% if @cart_total > 0 %>
   <div class="row">
     <div class="col-xs-12">
       <%= form_tag orders_path do %>
@@ -49,5 +50,8 @@
       <% end %>
     </div>
   </div>
+  <% else %>
+  <div>Your cart is empty. Please return to your <%= link_to 'shopping', root_path %>.</div>
+  <% end %>
 
 </section>
