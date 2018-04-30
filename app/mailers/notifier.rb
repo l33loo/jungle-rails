@@ -4,6 +4,7 @@ class Notifier < ApplicationMailer
 
   def confirmation(order)
     @order = order
+    @items = Order.find(@order.id).line_items.all
     mail(to: @order.email, subject: "Order ##{@order.id} - confirmation") do |format|
       format.html
     end
@@ -12,6 +13,6 @@ end
 
 class NotifierPreview < ActionMailer::Preview
   def confirmation
-    Notifier.confirmation(User.first)
+    Notifier.confirmation(Order.first)
   end
 end
