@@ -24,5 +24,8 @@ RSpec.describe Product, type: :model do
       prod = Product.create(name: "Foo", price: 1200, quantity: nil, category_id: 1)
     end
 
+    it "fails validation with no category, expecting a specific error message" do
+      prod = Product.create(name: "Joe", price: 1400, quantity: 12, category_id: nil)
+    end
   end
 end
