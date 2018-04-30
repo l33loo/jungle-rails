@@ -20,5 +20,9 @@ RSpec.describe Product, type: :model do
       expect(prod.errors.full_messages).to include("Price can't be blank")
     end
 
+    it "fails validation with no quantity, expecting a specific error message" do
+      prod = Product.create(name: "Foo", price: 1200, quantity: nil, category_id: 1)
+    end
+
   end
 end
