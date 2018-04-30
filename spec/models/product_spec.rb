@@ -14,5 +14,11 @@ RSpec.describe Product, type: :model do
       expect(prod.errors.full_messages).to include("Name can't be blank")
     end
 
+    it "fails validation with no price, expecting a specific error message" do
+      prod = Product.create(name: "Lala", price: nil, quantity: 3, category_id: 3)
+
+      expect(prod.errors.full_messages).to include("Price can't be blank")
+    end
+
   end
 end
