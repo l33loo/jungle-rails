@@ -27,28 +27,25 @@
     </div>
 
     <div class="row">
-    <div class="col-sm-6 col-sm-offset-1">
-      <%= form_for [@product] do |form| %>
-      <h2>Post a Review</h2>
-      <%= form.fields_for :reviews do |reviews_form| %>
-      <% if form.object.errors.any? %>
-        <div class="alert alert-danger">
-          <strong>The following errors prevented saving:</strong>
-          <ul>
-            <% form.object.errors.full_messages.each do |error| %>
-            <li><%= error %></li>
-            <% end %>
-          </ul>
+      <div class="col-sm-6 col-sm-offset-1">
+        <%= form_for [@product], url: product[:id]_reviews_path do |form| %>
+          <h2>Post a Review</h2>
+          <% if form.object.errors.any? %>
+            <div class="alert alert-danger">
+              <strong>The following errors prevented saving:</strong>
+              <ul>
+                <% form.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <div>
+          <%= form.submit 'Post Review', class: 'btn btn-primary' %>
+          <% end %>
         </div>
-      <% end %>
-      <div>
-
-       <% end %>
-        <%= form.submit 'Post Review', class: 'btn btn-primary' %>
-        <% end %>
       </div>
     </div>
-  </div>
 
     <table class="table table-bordered">
       <caption>Reviews</caption>
