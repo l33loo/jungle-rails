@@ -58,6 +58,30 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '.authenticate_with_credentials' do
+
+    before :each do
+      User.create!(first_name: 'Leelee', last_name: 'Sudoku', email: 'leelee@leelee.com', password: '123456', password_confirmation: '123456')
+    end
+
+    it 'validates that email gets authenticated' do
+      expect(User.authenticate_with_credentials('lee@lee.com', '123456')).to eq nil
+    end
+
+    it 'validates that password gets authenticated' do
+      expect(User.authenticate_with_credentials('leelee@leelee.com', '234567')).to eq nil
+    end
+
+    it 'validates that email gets authenticated despite extra whitespace' do
+      expect(User.authenticate_with_credentials(' leelee@leelee.com', '123456')).not_to eq nil
+    end
+
+    it 'validates that email gets authenticated irrespective of case' do
+      expect(User.authenticate_with_credentials('LEElee@leELee.com', '123456')).not_to eq nil
+    end
+
+  end
+
   private
 
   def new_user_password_confirmation_match?(user)
