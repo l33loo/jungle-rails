@@ -31,6 +31,11 @@ RSpec.describe User, type: :model do
       expect(user2.errors.full_messages).to include("Email has already been taken")
     end
 
+    it 'validates that the email is required' do
+      user = User.create(first_name: 'Leelee', last_name: 'Sudoku', password: '123456', password_confirmation: '123456')
+
+      expect(user.errors.full_messages).to include("Email can't be blank")
+    end
   end
 
   private
