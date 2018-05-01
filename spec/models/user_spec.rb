@@ -67,6 +67,11 @@ RSpec.describe User, type: :model do
     it 'validates that email gets authenticated' do
       expect(User.authenticate_with_credentials('lee@lee.com', '123456')).to eq nil
     end
+
+    it 'validates that password gets authenticated' do
+      expect(User.authenticate_with_credentials('leelee@leelee.com', '234567')).to eq nil
+    end
+
   end
 
   private
