@@ -14,6 +14,12 @@ RSpec.describe User, type: :model do
 
       expect(new_user_password_confirmation_match?(user)).to be false
     end
+
+    it 'validates that password must have a minimum length when account is created' do
+      user = User.create(first_name: 'Leelee', last_name: 'Sudoku', email: 'leelee@leelee.com', password: '12345', password_confirmation: '12345')
+
+      expect(user.errors.full_messages).to include("Password is too short")
+    end
   end
 
   describe 'EmailValidations' do
