@@ -22,6 +22,13 @@ RSpec.describe User, type: :model do
       expect(user2.errors.full_messages).to include("Email has already been taken")
     end
 
+    it 'validates that the email is unique regardless of different case' do
+      user1 = User.create(first_name: 'Leelee', last_name: 'Sudoku', email: 'leelee@leelee.COM', password: '123456', password_confirmation: '123456')
+      user2 = User.create(first_name: 'bob', last_name: 'Sudo', email: 'LEELEE@LEELEE.com', password: '234567', password_confirmation: '234567')
+
+      expect(user2.errors.full_messages).to include("Email has already been taken")
+    end
+
   end
 
   private
