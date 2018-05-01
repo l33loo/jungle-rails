@@ -58,6 +58,12 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '.authenticate_with_credentials' do
+
+    before :each do
+      User.create!(first_name: 'Leelee', last_name: 'Sudoku', email: 'leelee@leelee.com', password: '123456', password_confirmation: '123456')
+    end
+
   private
 
   def new_user_password_confirmation_match?(user)
