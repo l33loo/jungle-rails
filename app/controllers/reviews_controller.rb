@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
   def create
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:product_id])
     @review = @product.reviews.new(review_params)
     redirect_to [:root], notice: 'Review successfully posted!'
 
@@ -10,11 +10,11 @@ class ReviewsController < ApplicationController
   #   # else
   #   #   error
   #   # end
-  # end
+  end
 
   private
 
   def review_params
-    params.require(:product).permit(:description, :rating)
+    params.require(:review).permit(:description, :rating)
   end
 end
