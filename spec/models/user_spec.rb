@@ -14,7 +14,9 @@ RSpec.describe User, type: :model do
 
       expect(new_user_password_confirmation_match?(user)).to be false
     end
+  end
 
+  describe 'EmailValidations' do
     it 'validates that the email is unique with identical case' do
       user1 = User.create(first_name: 'Leelee', last_name: 'Sudoku', email: 'leelee@leelee.com', password: '123456', password_confirmation: '123456')
       user2 = User.create(first_name: 'bob', last_name: 'Sudo', email: 'leelee@leelee.com', password: '234567', password_confirmation: '234567')
