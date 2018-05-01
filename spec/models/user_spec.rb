@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'EmailValidations' do
+  describe 'PasswordValidations' do
 
     it 'validates that a new user is created with a password and a password confirmation' do
       user = User.create(first_name: 'Leelee', last_name: 'Sudoku', email: 'leelee@leelee.com')
