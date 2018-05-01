@@ -5,8 +5,22 @@ RSpec.describe User, type: :model do
 
     it 'validates that a new user is created with a password and a password confirmation' do
       user = User.create(first_name: 'Leelee', last_name: 'Sudoku', email: 'leelee@leelee.com')
+
       expect(user).not_to be_valid
     end
+
+    it 'validates that password and a password confirmation have the same value' do
+      user = User.create(first_name: 'Leelee', last_name: 'Sudoku', email: 'leelee@leelee.com', password: '123456', password_confirmation: '234567')
+
+      expect(new_user_password_confirmation_match?(user)).to be false
+    end
+
+  end
+
+  private
+
+  def new_user_password_confirmation_match?(user)
+    user.password == user.password_confirmation
   end
 
 end
@@ -17,3 +31,4 @@ end
 #   validates :email, presence: true, uniqueness: { case_sensitive: false }
 #   validates :password, presence: true
 #   validates :password_confirmation, presence: true
+
