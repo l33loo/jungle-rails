@@ -38,6 +38,20 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'NameValidations' do
+    it 'validates that the first name is required' do
+      user = User.create(last_name: 'Sudoku', email: 'leelee@leelee.COM', password: '123456', password_confirmation: '123456')
+
+      expect(user.errors.full_messages).to include("First name can't be blank")
+    end
+
+    it 'validates that a last name is required' do
+      user = User.create(first_name: 'Leelee', email: 'leelee@leelee.com', password: '123456', password_confirmation: '123456')
+
+      expect(user.errors.full_messages).to include("Last name can't be blank")
+    end
+  end
+
   private
 
   def new_user_password_confirmation_match?(user)
