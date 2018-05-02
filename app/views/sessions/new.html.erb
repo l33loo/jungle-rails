@@ -1,14 +1,10 @@
 <h1>Login</h1>
 
 <div>
-  <% puts "HELLO!!!!! #{sessions_path}" %>
-<%= form_tag sessions_path do |form| %>
+  <%= form_tag sessions_path do |form| %>
 
-Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
-    <% end %>
-  </div>
-
-</div>
+    Email: <%= text_field_tag :email %>
+    Password: <%= password_field_tag :password %>
+    <%= submit_tag "Submit" %>
+  <% end %>
 </div>
